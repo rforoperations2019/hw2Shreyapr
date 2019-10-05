@@ -13,6 +13,8 @@ require(leaflet.extras)
 require(dplyr)
 require(readxl)
 require(stringr)
+#install.packages("rgeos")
+
 require(rgeos)
 require(sp)
 ```
@@ -75,8 +77,10 @@ leaflet(data = rail) %>%
 
 ```{r}
 
-states <- readOGR("shp/cb_2013_us_state_20m.shp",
-  layer = "cb_2013_us_state_20m", GDAL1_integer64_policy = TRUE)
+states <- readOGR("./USStates/cb_2018_us_state_20m.shp")
+
+#states <- readOGR("shp/cb_2013_us_state_20m.shp",
+ # layer = "cb_2013_us_state_20m", GDAL1_integer64_policy = TRUE)
 
 
 
@@ -85,11 +89,73 @@ neStates <- subset(states, states$STUSPS %in% c(
 ))
 
 leaflet(neStates) %>%
-  addPolygons(color = "#444444", weight = 1, smoothFactor = 0.5,
+  addPolygons(color = "Blue", weight = 1, smoothFactor = 0.5,
     opacity = 1.0, fillOpacity = 0.5,
     fillColor = ~colorQuantile("YlOrRd", ALAND)(ALAND),
     highlightOptions = highlightOptions(color = "white", weight = 2,
       bringToFront = TRUE))
 
+```
+
+#Create new table for polygon 
+```{r}
+states <- readOGR("./USStates/cb_2018_us_state_20m.shp")
+crime <- read.csv("./data.csv")
+head(crime)
+head(states)
+```
+
+#Merge Tables to form new shape file with crime data
+```{r}
+
+StateCrime <- states[states$NAME %in% crime$State,]
+
+StateCrime@data <- merge(StateCrime@data, crime, sort = FALSE, by.x = "NAME", by.y = "State")
+head(StateCrime)
+```
+
+
+#Create element bins 
+```{r}
+bins1 <- c(0,10000000, 20000000, 35000000, Inf)
+
+pal1 <- colorBin(
+  palette = "Purples",
+  domain = StateCrime$Pop, 
+  bins = bins1)
+
+bins2 <- c(0,1000, 2000, 3000, Inf)
+
+pal2 <- colorBin(
+  palette = "Reds",
+  domain = StateCrime$firearmDeaths, 
+  bins = bins2)
+
+bins3 <- c(0,4, 8, 12, Inf)
+
+pal3 <- colorBin(
+  palette = "Blues",
+  domain = StateCrime$homicideRate2017,
+  bins = bins3)
+
+```
+
+
+```{r}
+
+
+leaflet(data = StateCrime) %>%
+  addProviderTiles("Stamen.Toner", options = providerTileOptions(noWrap = TRUE)) %>%
+  addPolygons(color = ~pal1(`Pop`), popup = ~paste0("<b>", `Pop`, ":</b> ", round(`Pop`, 2), " years"), group = "Population") %>%
+  addLegend(position = "bottomright", pal = pal1, values = StateCrime$`Pop`, title = "State Population", group = "Population")%>%
+  addPolygons(color = ~pal2(`Pop`), popup = ~paste0("<b>", `firearmDeaths`, ":</b> ", round(`firearmDeaths`, 2), " years"), group = "FirearmDeaths") %>%
+  addLegend(position = "bottomright", pal = pal2, values = StateCrime$`firearmDeaths`, title = "State Deaths by Firearms", group = "FirearmDeaths")%>%
+  addPolygons(color = ~pal3(`homicideRate2017`), popup = ~paste0("<b>", `homicideRate2017`, ":</b> ", round(`homicideRate2017`, 2), " years"), group = "Homicide") %>%
+  addLegend(position = "bottomright", pal = pal3, values = StateCrime$`homicideRate2017`, title = "State Homicide Rate", group = "Homicide")%>%
+  addLayersControl(
+      overlayGroups  = c("Population", "FirearmDeaths", "Homicide"),
+options = layersControlOptions(collapsed = FALSE)
+)
+  
 ```
 
