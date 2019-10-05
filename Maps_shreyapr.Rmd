@@ -18,34 +18,13 @@ require(sp)
 ```
 
 
-#Loading Data
-```{r}
-Homes <- readOGR('C:/Users/shrey/Dropbox/rShiny/hw2/hw2leaflet/hw2Shreyapr/SeniorHomes/DSHS_Adult_Family_Homes.shp') 
-plot(Homes)
-```
 
 
-
+#Reading data 
 ```{r}
 Homes <- read.csv('C:/Users/shrey/Dropbox/rShiny/hw2/hw2leaflet/hw2Shreyapr/DSHS_Adult_Family_Homes.csv')
 View(Homes)
 ```
-
-
-
-#Merge into table
-
-```{r, merging}
-data <- read_excel("Geographies_of_Opportunity_Ranking_Well_Being_by_Congressional_District_(114th_Congress).xlsx") %>%
-  mutate(Number = str_pad(Number, 4, pad = "0"))
-
-# Just having the matching GEOID's
-cds <- cds.load[cds.load$GEOID %in% op_data$Number,]
-
-cds@data <- merge(cds@data, op_data, sort = FALSE, by.x = "GEOID", by.y = "Number")
-```
-
-
 
 
 
@@ -59,6 +38,7 @@ leaflet() %>%
 #add layerControls()
 ```{r}
 
+
 leaflet(data = Homes) %>%
   addProviderTiles(providers$Esri.NatGeoWorldMap, options = providerTileOptions(noWrap = TRUE), group = "NGC") %>%
   addProviderTiles(providers$Stamen.Toner, options = providerTileOptions(noWrap = TRUE), group = "Stamen") %>%
@@ -68,6 +48,32 @@ leaflet(data = Homes) %>%
 overlayGroups = c("Homes", "WASeniors"),
 options = layersControlOptions(collapsed = FALSE)
 )
+
+```
+
+
+
+#Reading data 
+```{r}
+Rail <- read.csv('C:/Users/shrey/Dropbox/rShiny/hw2/hw2leaflet/hw2Shreyapr/New_York_State__Railroad_Lines.csv')
+View(Rail)
+```
+
+# Lines
+```{r, lines}
+rivers <- readOGR("./New_York_State__Railroad_Lines/New_York_State_Railroad_Lines.shp")
+
+leaflet(data = rivers) %>%
+  addProviderTiles("Stamen.Watercolor", options = providerTileOptions(noWrap = TRUE)) %>%
+  addPolylines(color = "brown")
+
+
+```
+
+
+
+
+```{r}
 
 ```
 
