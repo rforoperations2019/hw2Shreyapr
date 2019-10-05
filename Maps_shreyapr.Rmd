@@ -121,6 +121,5 @@ leaflet(data = StateCrime) %>%
       overlayGroups  = c("Population", "FirearmDeaths", "Homicide"),
 options = layersControlOptions(collapsed = FALSE)
 )
-  
 ```
 
