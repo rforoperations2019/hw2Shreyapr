@@ -9,33 +9,20 @@ output: html_document
 require(rgdal)
 require(leaflet)
 require(leaflet.extras)
-
 require(dplyr)
 require(readxl)
 require(stringr)
-#install.packages("rgeos")
-
 require(rgeos)
 require(sp)
 ```
 
-
-
+#Map 1 focuses on having multiple choices for basemap layers | The data consists of a feature class for all adult homes in Washington state. 
 
 #Reading data 
 ```{r}
-Homes <- read.csv('C:/Users/shrey/Dropbox/rShiny/hw2/hw2leaflet/hw2Shreyapr/DSHS_Adult_Family_Homes.csv')
-View(Homes)
+Homes <- read.csv('Datafiles/DSHS_Adult_Family_Homes.csv')
+#head(Homes)
 ```
-
-
-
-#blank Map with Basemap
-```{r}
-leaflet() %>%
-  addProviderTiles(providers$Esri.WorldImagery)
-```
-
 
 #add layerControls()
 ```{r}
@@ -53,17 +40,11 @@ options = layersControlOptions(collapsed = FALSE)
 
 ```
 
-
-
-#Reading data 
-```{r}
-Rail <- read.csv('C:/Users/shrey/Dropbox/rShiny/hw2/hw2leaflet/hw2Shreyapr/New_York_State__Railroad_Lines.csv')
-View(Rail)
-```
+#Map 2 is a mapping of a line layer on to the basemap | Feature layer is a layer of railroads in LongIsland, NY
 
 # Lines
 ```{r, lines}
-rail <- readOGR("./New_York_State__Railroad_Lines/New_York_State_Railroad_Lines.shp")
+rail <- readOGR("./Datafiles/New_York_State_Railroad_Lines.shp")
 
 leaflet(data = rail) %>%
   addProviderTiles("Stamen.Watercolor", options = providerTileOptions(noWrap = TRUE)) %>%
@@ -73,36 +54,14 @@ leaflet(data = rail) %>%
 ```
 
 
-
-
-```{r}
-
-states <- readOGR("./USStates/cb_2018_us_state_20m.shp")
-
-#states <- readOGR("shp/cb_2013_us_state_20m.shp",
- # layer = "cb_2013_us_state_20m", GDAL1_integer64_policy = TRUE)
-
-
-
-neStates <- subset(states, states$STUSPS %in% c(
-  "CT","ME","MA","NH","RI","VT","NY","NJ","PA"
-))
-
-leaflet(neStates) %>%
-  addPolygons(color = "Blue", weight = 1, smoothFactor = 0.5,
-    opacity = 1.0, fillOpacity = 0.5,
-    fillColor = ~colorQuantile("YlOrRd", ALAND)(ALAND),
-    highlightOptions = highlightOptions(color = "white", weight = 2,
-      bringToFront = TRUE))
-
-```
+#Map 3 deals with polygons | We utilize the crime data from hw1 and merge that with the US states Shape file to create a new dataset. We then map different crimes and state populations on to the map
 
 #Create new table for polygon 
 ```{r}
-states <- readOGR("./USStates/cb_2018_us_state_20m.shp")
-crime <- read.csv("./data.csv")
-head(crime)
-head(states)
+states <- readOGR("./Datafiles/cb_2018_us_state_20m.shp")
+crime <- read.csv("./Datafiles/data.csv")
+#head(crime)
+#head(states)
 ```
 
 #Merge Tables to form new shape file with crime data
@@ -111,27 +70,27 @@ head(states)
 StateCrime <- states[states$NAME %in% crime$State,]
 
 StateCrime@data <- merge(StateCrime@data, crime, sort = FALSE, by.x = "NAME", by.y = "State")
-head(StateCrime)
+#head(StateCrime)
 ```
 
 
 #Create element bins 
 ```{r}
-bins1 <- c(0,10000000, 20000000, 35000000, Inf)
+bins1 <- c(0,10000000, 25000000, Inf)
 
 pal1 <- colorBin(
   palette = "Purples",
   domain = StateCrime$Pop, 
   bins = bins1)
 
-bins2 <- c(0,1000, 2000, 3000, Inf)
+bins2 <- c(0,1000, 2500, Inf)
 
 pal2 <- colorBin(
   palette = "Reds",
   domain = StateCrime$firearmDeaths, 
   bins = bins2)
 
-bins3 <- c(0,4, 8, 12, Inf)
+bins3 <- c(0,5 ,10, Inf)
 
 pal3 <- colorBin(
   palette = "Blues",
@@ -141,16 +100,22 @@ pal3 <- colorBin(
 ```
 
 
+#mapping the feature layer on to the map
+
 ```{r}
 
 
 leaflet(data = StateCrime) %>%
+
   addProviderTiles("Stamen.Toner", options = providerTileOptions(noWrap = TRUE)) %>%
-  addPolygons(color = ~pal1(`Pop`), popup = ~paste0("<b>", `Pop`, ":</b> ", round(`Pop`, 2), " years"), group = "Population") %>%
+  addPolygons(color = ~pal1(`Pop`), popup = ~paste0("<b>", `Pop`, ":</b> ", round(`Pop`, 2), " years"), group = "Population", weight = 1, smoothFactor = 0.5,
+    opacity = 1.0, fillOpacity = 0.8) %>%
   addLegend(position = "bottomright", pal = pal1, values = StateCrime$`Pop`, title = "State Population", group = "Population")%>%
-  addPolygons(color = ~pal2(`Pop`), popup = ~paste0("<b>", `firearmDeaths`, ":</b> ", round(`firearmDeaths`, 2), " years"), group = "FirearmDeaths") %>%
+  addPolygons(color = ~pal2(`firearmDeaths`), popup = ~paste0("<b>", `firearmDeaths`, ":</b> ", round(`firearmDeaths`, 2), " years"), group = "FirearmDeaths", weight = 1, smoothFactor = 0.5,
+    opacity = 1.0, fillOpacity = 0.8) %>%
   addLegend(position = "bottomright", pal = pal2, values = StateCrime$`firearmDeaths`, title = "State Deaths by Firearms", group = "FirearmDeaths")%>%
-  addPolygons(color = ~pal3(`homicideRate2017`), popup = ~paste0("<b>", `homicideRate2017`, ":</b> ", round(`homicideRate2017`, 2), " years"), group = "Homicide") %>%
+  addPolygons(color = ~pal3(`homicideRate2017`), popup = ~paste0("<b>", `homicideRate2017`, ":</b> ", round(`homicideRate2017`, 2), " years"), group = "Homicide", weight = 1, smoothFactor = 0.5,
+    opacity = 1.0, fillOpacity = 0.8) %>%
   addLegend(position = "bottomright", pal = pal3, values = StateCrime$`homicideRate2017`, title = "State Homicide Rate", group = "Homicide")%>%
   addLayersControl(
       overlayGroups  = c("Population", "FirearmDeaths", "Homicide"),

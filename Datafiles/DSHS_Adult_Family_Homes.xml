@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <origin/>
+                <pubdate>20191001</pubdate>
+                <title>DSHS Adult Family Homes</title>
+                <geoform>vector digital data</geoform>
+                <onlink>https://geo.wa.gov/datasets/WADSHS::dshs-adult-family-homes</onlink>
+                <onlink>https://www.arcgis.com/home/item.html?id=ed5cbbce109f450fb92d589136f1bab7</onlink>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>Presents the locations of Adult Family Homes for DSHS. The data was geocoded using the The WAMAS address correction and geocoding tool from a 10/1/2019 extraction from the Residential Care Services web application at https://fortress.wa.gov/dshs/adsaapps/lookup/AFHAdvLookup.aspx.Important: DSHS reserves the right to alter, suspend, re-host, or retire this service at any time and without notice. This is a map service that you can use in custom web applications and software products. Your use of this map service in these types of tools forms a dependency on the service definition (available fields, layers, etc.). If you form any dependency on this service, be aware of this significant risk to your purposes. You might consider mitigating your risk by extracting the source data and using it to host your own service in an environment under your control. Typically, DSHS Enterprise GIS staff will provide notification of changes via the Comments RSS capability in ArcGIS Online.  You should subscribe to this RSS feed to monitor change notifications:  https://www.arcgis.com/sharing/rest/content/items/ed5cbbce109f450fb92d589136f1bab7/comments?f=rss</abstract>
+            <purpose>Provides DSHS Residential Services Adult Family Homes locations</purpose>
+        </descript>
+        <timeperd>
+            <timeinfo>
+                <sngdate>
+                    <caldate>20191001</caldate>
+                </sngdate>
+            </timeinfo>
+            <current>Extracted from web tool at https://fortress.wa.gov/dshs/adsaapps/lookup/AFHAdvLookup.aspx, transformed, and loaded to the DSHS Geospatial Data Library</current>
+        </timeperd>
+        <status>
+            <progress>Complete</progress>
+            <update>Monthly</update>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-124.455972</westbc>
+                <eastbc>-116.892431</eastbc>
+                <northbc>48.966373</northbc>
+                <southbc>45.533655</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>ISO 19115 Topic Categories</themekt>
+                <themekey>health</themekey>
+                <themekey>structure</themekey>
+            </theme>
+            <place>
+                <placekt>None</placekt>
+                <placekey>Washington</placekey>
+                <placekey>State</placekey>
+                <placekey>USA</placekey>
+                <placekey>United</placekey>
+                <placekey>States</placekey>
+                <placekey>America</placekey>
+            </place>
+        </keywords>
+        <accconst>None</accconst>
+        <useconst>The data in its current form is provisional and "best available" until data management workflows are established that can support consistent, highly accurate residential care facility locations. Many of the locations in this data collection are known to be spatially inaccurate.Washington's Public Records Disclosure Act (RCW 42.56, http://apps.leg.wa.gov/RCW/default.aspx?cite=42.56) was adopted by initiative of the people in 1972 to open government records to the public. Open data supports the Governor’s priorities for Efficient, Effective and Accountable Government through Transparency and Accountability. The Washington State Department of Social and Health Services (DSHS) believes in the importance of the public’s right to know about its operations and activities. DSHS prepares and uses this data and information as a conceptual tool for its own internal purposes. No public agency, public official, public employee, or custodian shall be liable, nor shall a cause of action exist, for any loss or damage based upon the release of a public record if the public agency, public official, public employee, or custodian acted in good faith in attempting to comply with the provisions of Washington’s Public Records Act.</useconst>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Washington State Department of Social and Health Services</cntorg>
+                    <cntper>DSHS Geospatial Data Library Administrator</cntper>
+                </cntorgp>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>1115 Washington St SE, MS:45204</address>
+                    <city>Olympia</city>
+                    <state>WA</state>
+                    <postal>98504-5204</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(360) 902-0799</cntvoice>
+                <cntemail>GIS@dshs.wa.gov</cntemail>
+                <hours>8:00 A.M. - 5:00 P.M. Pacific Time Zone, Monday through Friday</hours>
+            </cntinfo>
+        </ptcontac>
+        <datacred>DSHS Enterprise GIS</datacred>
+        <secinfo>
+            <secsys>Washington State Office of the Chief Information Officer’s Policy 141.10 Securing Information Technology Assets Standards</secsys>
+            <secclass>Unclassified</secclass>
+            <sechandl>Category 1 - Public Information.  Public information is information that can be released to the public.</sechandl>
+        </secinfo>
+        <native>Version 6.2 (Build 9200) ; Esri ArcGIS 10.6.1.9273</native>
+    </idinfo>
+    <dataqual>
+        <logic>unknown</logic>
+        <complete>Confirmed that all extracted records were loaded to the feature class</complete>
+        <lineage>
+            <procstep>
+                <procdesc>Corrected addresses and geocoded locations using WAMAS</procdesc>
+                <procdate>20191001</procdate>
+                <proccont>
+                    <cntinfo>
+                        <cntorgp>
+                            <cntorg>Washington State Department of Social and Health Services</cntorg>
+                            <cntper>DSHS Geospatial Data Library Administrator</cntper>
+                        </cntorgp>
+                        <cntpos>Enterprise GIS Data Architect</cntpos>
+                        <cntaddr>
+                            <addrtype>mailing and physical</addrtype>
+                            <address>1115 Washington St SE, MS:45204</address>
+                            <city>Olympia</city>
+                            <state>WA</state>
+                            <postal>98504-5204</postal>
+                            <country>US</country>
+                        </cntaddr>
+                        <cntvoice>(360) 902-0799</cntvoice>
+                        <cntemail>gis@dshs.wa.gov</cntemail>
+                        <hours>8:00 A.M. - 5:00 P.M. Pacific Time Zone, Monday through Friday</hours>
+                    </cntinfo>
+                </proccont>
+            </procstep>
+        </lineage>
+    </dataqual>
+    <spdoinfo>
+        <direct>Vector</direct>
+        <ptvctinf>
+            <sdtsterm>
+                <sdtstype>Entity point</sdtstype>
+                <ptvctcnt>3091</ptvctcnt>
+            </sdtsterm>
+        </ptvctinf>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>DSHS_AdultFamilyHome</enttypl>
+                <enttypd>DSHS Adult Family Home</enttypd>
+                <enttypds>Washington State Department of Social and Health Services</enttypds>
+            </enttyp>
+            <attr>
+                <attrlabl>OBJECTID</attrlabl>
+                <attrdef>Internal feature number.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SHAPE</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>Esri</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Coordinates defining the features.</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Speciality</attrlabl>
+                <attrdef>Specialty</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>DSHS codes</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>contract</attrlabl>
+                <attrdef>contract type</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>contract type names</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LicenseNumber</attrlabl>
+                <attrdef>license number</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>unique ID for license</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LocationNumber</attrlabl>
+                <attrdef>location number</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>unique location number</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>FacInstanceId</attrlabl>
+                <attrdef>facility instance identifier</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>unique id for facility instance</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>FacilityType</attrlabl>
+                <attrdef>facility type code</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>AF</edomv>
+                                                						
+                        
+                        <edomvd>Adult Family Home</edomvd>
+                                                						
+                        
+                        <edomvds>DSHS Residential Care Services</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>FacilityName</attrlabl>
+                <attrdef>facility name</attrdef>
+                <attrdefs>Licensed service provider</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>facility name</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>FacilityStatus</attrlabl>
+                <attrdef>facility status</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>OP</edomv>
+                                                						
+                        
+                        <edomvd>Open</edomvd>
+                                                						
+                        
+                        <edomvds>DSHS Residential Care Services</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LocationAddress</attrlabl>
+                <attrdef>street address of location</attrdef>
+                <attrdefs>Local addressing authority</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>street address of location</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LocationCity</attrlabl>
+                <attrdef>location city</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>location city name</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LocationState</attrlabl>
+                <attrdef>location state</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>WA</edomv>
+                                                						
+                        
+                        <edomvd>Washington</edomvd>
+                                                						
+                        
+                        <edomvds>US Postal Service</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LocationZipCode</attrlabl>
+                <attrdef>location ZIP Code</attrdef>
+                <attrdefs>US Postal Service</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>USPS ZIP Code</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LocationCounty</attrlabl>
+                <attrdef>location county</attrdef>
+                <attrdefs>State of Washington</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>Washington county name</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>MailAddress</attrlabl>
+                <attrdef>mail address</attrdef>
+                <attrdefs>local addressing authority</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>mailing address</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>MailCity</attrlabl>
+                <attrdef>mail city</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>mail city name</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>MailState</attrlabl>
+                <attrdef>mail state</attrdef>
+                <attrdefs>US Postal Service</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>US Postal Service state name abbreviation</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>MailZipCode</attrlabl>
+                <attrdef>mail ZIP Code</attrdef>
+                <attrdefs>US Postal Service</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>US Postal Service ZIP code</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>TelephoneNmbr</attrlabl>
+                <attrdef>contact telephone number</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>telephone number</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>FaxNmbr</attrlabl>
+                <attrdef>contact fax number</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>contact fax number</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ConfidentialFaxNmbr</attrlabl>
+                <attrdef>contact confidential fax number</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>contact confidential fax number</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>RCSRegionUnit</attrlabl>
+                <attrdef>DSHS Residential Care Services region unit identifier</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>region unit identifier</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>SpecialityCode</attrlabl>
+                <attrdef>specialty codes</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>specialty codes</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ContractCode</attrlabl>
+                <attrdef>contract code</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>contract codes</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>FacilityPOC</attrlabl>
+                <attrdef>facility point of contact person's name</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>facility contact person's name</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LicensedBedCount</attrlabl>
+                <attrdef>the number of beds for which the facility is licensed</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>integer indicating quantity of beds for which the facility is licensed</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LicenseExpirationDate</attrlabl>
+                <attrdef>license expiration date</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>date on which the license expires</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>ServiceDisclosure</attrlabl>
+                <attrdef>URL to the service disclosure resource</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>web hyperlink</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Has_Reports</attrlabl>
+                <attrdef>indicates whether or not the facility has related administrative documents in the DSHS record keeping systems</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>Yes</edomv>
+                                                						
+                        
+                        <edomvd>There are reports for the facility</edomvd>
+                                                						
+                        
+                        <edomvds>DSHS Residential Care Services</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+                <attrdomv>
+                                        					
+                    
+                    <edom>
+                                                						
+                        
+                        <edomv>No</edomv>
+                                                						
+                        
+                        <edomvd>There are not reports for the facility</edomvd>
+                                                						
+                        
+                        <edomvds>DSHS Residential Care Services</edomvds>
+                                                					
+                    
+                    </edom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Reports_Location</attrlabl>
+                <attrdef>URL to the report resource</attrdef>
+                <attrdefs>DSHS Residential Care Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>web hyperlink</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>GeocodeScore</attrlabl>
+                <attrdef>geocoding match score generated by the Washington Master Address Services (WAMAS - https://ocio.wa.gov/initiatives/washington-master-address-services-wamas).  Indicates how well the facility location point was placed.</attrdef>
+                <attrdefs>Washington Master Address Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <rdom>
+                                                						
+                        
+                        <rdommin>0</rdommin>
+                                                						
+                        
+                        <rdommax>100</rdommax>
+                                                					
+                    
+                    </rdom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>GeocodeSource</attrlabl>
+                <attrdef>geocoding match source generated by the Washington Master Address Services (WAMAS - https://ocio.wa.gov/initiatives/washington-master-address-services-wamas).  Indicates data source of higher accuracy was used to determine the XY coordinates of the feature.</attrdef>
+                <attrdefs>Washington Master Address Services</attrdefs>
+                <attrdomv>
+                                        					
+                    
+                    <udom>name of data source</udom>
+                                        				
+                
+                </attrdomv>
+            </attr>
+        </detailed>
+    </eainfo>
+    <metainfo>
+        <metd>20191001</metd>
+        <metfrd>20191101</metfrd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Washington State Department of Social and Health Services</cntorg>
+                    <cntper>DSHS Geospatial Data Library Administrator</cntper>
+                </cntorgp>
+                <cntaddr>
+                    <addrtype>mailing and physical</addrtype>
+                    <address>1115 Washington St SE, MS:45204</address>
+                    <city>Olympia</city>
+                    <state>WA</state>
+                    <postal>98504-5204</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>(360) 902-0799</cntvoice>
+                <cntemail>GIS@dshs.wa.gov</cntemail>
+                <hours>8:00 A.M. - 5:00 P.M. Pacific Time Zone, Monday through Friday</hours>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+        <metuc>Washington's Public Records Disclosure Act (RCW 42.56, http://apps.leg.wa.gov/RCW/default.aspx?cite=42.56) was adopted by initiative of the people in 1972 to open government records to the public. Open data supports the Governor’s priorities for Efficient, Effective and Accountable Government through Transparency and Accountability. The Washington State Department of Social and Health Services (DSHS) believes in the importance of the public’s right to know about its operations and activities. DSHS prepares and uses this data and information as a conceptual tool for its own internal purposes. No public agency, public official, public employee, or custodian shall be liable, nor shall a cause of action exist, for any loss or damage based upon the release of a public record if the public agency, public official, public employee, or custodian acted in good faith in attempting to comply with the provisions of Washington’s Public Records Act.</metuc>
+        <metsi>
+            <metscs>Washington State Office of the Chief Information Officer’s Policy 141.10 Securing Information Technology Assets Standards</metscs>
+            <metsc>Unclassified</metsc>
+            <metshd>Category 1 - Public Information. Public information is information that can be released to the public.</metshd>
+        </metsi>
+    </metainfo>
+</metadata>
