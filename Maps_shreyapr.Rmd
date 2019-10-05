@@ -4,6 +4,70 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-  
+#Install these packages
+
+require(rgdal)
+require(leaflet)
+require(leaflet.extras)
+
+require(dplyr)
+require(readxl)
+require(stringr)
+require(rgeos)
+require(sp)
+```
+
+
+#Loading Data
+```{r}
+Homes <- readOGR('C:/Users/shrey/Dropbox/rShiny/hw2/hw2leaflet/hw2Shreyapr/SeniorHomes/DSHS_Adult_Family_Homes.shp') 
+plot(Homes)
+```
+
+
+
+```{r}
+Homes <- read.csv('C:/Users/shrey/Dropbox/rShiny/hw2/hw2leaflet/hw2Shreyapr/DSHS_Adult_Family_Homes.csv')
+View(Homes)
+```
+
+
+
+#Merge into table
+
+```{r, merging}
+data <- read_excel("Geographies_of_Opportunity_Ranking_Well_Being_by_Congressional_District_(114th_Congress).xlsx") %>%
+  mutate(Number = str_pad(Number, 4, pad = "0"))
+
+# Just having the matching GEOID's
+cds <- cds.load[cds.load$GEOID %in% op_data$Number,]
+
+cds@data <- merge(cds@data, op_data, sort = FALSE, by.x = "GEOID", by.y = "Number")
+```
+
+
+
+
+
+#blank Map with Basemap
+```{r}
+leaflet() %>%
+  addProviderTiles(providers$Esri.WorldImagery)
+```
+
+
+#add layerControls()
+```{r}
+
+leaflet(data = Homes) %>%
+  addProviderTiles(providers$Esri.NatGeoWorldMap, options = providerTileOptions(noWrap = TRUE), group = "NGC") %>%
+  addProviderTiles(providers$Stamen.Toner, options = providerTileOptions(noWrap = TRUE), group = "Stamen") %>%
+  addMarkers(~Lat, ~Long) %>%
+  addLayersControl(
+    baseGroups = c("NGC", "Stamen"),
+overlayGroups = c("Homes", "WASeniors"),
+options = layersControlOptions(collapsed = FALSE)
+)
+
 ```
 
